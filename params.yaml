@@ -1,0 +1,8 @@
+base: 
+  project: News_Article_Sorting_NLP_Machine-Learning
+  random_state: 42
+
+data_source: 
+  train_source_data: data_given/BBC News Train.csv
+  test_source_data: data_given/BBC News Test.csv
+
