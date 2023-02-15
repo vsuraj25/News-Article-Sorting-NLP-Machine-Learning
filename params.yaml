@@ -3,6 +3,9 @@ base:
   random_state: 42
 
 data_source: 
-  train_source_data: data_given/BBC News Train.csv
-  test_source_data: data_given/BBC News Test.csv
+  train_source_data: data_given/BBC_News_Train.csv
+  test_source_data: data_given/BBC_News_Test.csv
 
+load_data:
+  raw_train_data_path: data/raw/news_train.csv
+  raw_test_data_path: data/raw/news_test.csv

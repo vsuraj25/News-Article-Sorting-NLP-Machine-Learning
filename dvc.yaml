@@ -1,0 +1,11 @@
+stages:
+  load_data: 
+    cmd: python src/load_data.py --config=params.yaml
+    deps: 
+    - src/upload_get_data.py
+    - src/load_data.py
+    - data_given/BBC_News_Train.csv
+    - data_given/BBC_News_Test.csv
+    outs:
+    - data/raw/news_test.csv
+    - data/raw/news_train.csv

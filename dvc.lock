@@ -1,0 +1,24 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src/load_data.py --config=params.yaml
+    deps:
+    - path: data_given/BBC_News_Test.csv
+      md5: 7c29e40896b91c1cc55812d9c9832b32
+      size: 1712432
+    - path: data_given/BBC_News_Train.csv
+      md5: 97e496bd04df9a513f8d22793b7fc0f1
+      size: 3351206
+    - path: src/load_data.py
+      md5: 0caff9c51586dd173fa805c4e4d8f870
+      size: 1264
+    - path: src/upload_get_data.py
+      md5: 7eaae0f5425a9bdee39ad6ca5d820b6c
+      size: 4023
+    outs:
+    - path: data/raw/news_test.csv
+      md5: 6717eafb379011641a42b68b16080eab
+      size: 11986928
+    - path: data/raw/news_train.csv
+      md5: 99cb48562b017c48fa81f2ff94e276d2
+      size: 23458292
