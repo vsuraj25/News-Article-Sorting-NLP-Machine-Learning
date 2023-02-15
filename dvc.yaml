@@ -9,3 +9,11 @@ stages:
     outs:
     - data/raw/news_test.csv
     - data/raw/news_train.csv
+
+  process_data:
+    cmd: python src/preprocess.py --config=params.yaml
+    deps: 
+    - src/preprocess.py
+    - data/raw/news_train.csv
+    outs:
+    - data/processed/news_model_data.csv

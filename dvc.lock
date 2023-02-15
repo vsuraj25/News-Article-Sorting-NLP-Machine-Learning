@@ -22,3 +22,16 @@ stages:
     - path: data/raw/news_train.csv
       md5: 99cb48562b017c48fa81f2ff94e276d2
       size: 23458292
+  process_data:
+    cmd: python src/preprocess.py --config=params.yaml
+    deps:
+    - path: data/raw/news_train.csv
+      md5: 99cb48562b017c48fa81f2ff94e276d2
+      size: 23458292
+    - path: src/preprocess.py
+      md5: 6dec5389c0b2f859e62db4b8659a742f
+      size: 2568
+    outs:
+    - path: data/processed/news_model_data.csv
+      md5: 4af7a28e8b7d4ea3a60e0ace84ff8340
+      size: 22493543

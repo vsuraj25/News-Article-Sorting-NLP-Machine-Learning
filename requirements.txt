@@ -8,3 +8,4 @@ dvc
 mlflow
 matplotlib
 seaborn
+nltk

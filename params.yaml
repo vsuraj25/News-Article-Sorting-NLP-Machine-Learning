@@ -9,3 +9,7 @@ data_source:
 load_data:
   raw_train_data_path: data/raw/news_train.csv
   raw_test_data_path: data/raw/news_test.csv
+  
+
+process_data:
+  news_model_data_path: data/processed/news_model_data.csv
