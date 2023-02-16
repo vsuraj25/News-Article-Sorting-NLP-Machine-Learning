@@ -1,0 +1,10 @@
+2023-02-16-13-07-38:
+  best_params:
+    max_depth: 10
+    min_samples_leaf: 1
+    min_samples_split: 8
+    n_estimators: 150
+  metrics:
+    accuracy: 0.9919478527607362
+    precision: 0.9919478527607362
+    recall: 0.9919478527607362

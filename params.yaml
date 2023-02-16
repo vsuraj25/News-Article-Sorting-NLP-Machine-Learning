@@ -13,3 +13,27 @@ load_data:
 
 process_data:
   news_model_data_path: data/processed/news_model_data.csv
+
+train_evaluate:
+  estimators:
+    RandomForestClassifer: 
+      params:
+        min_samples_leaf: 1
+        max_depth : 10
+        n_estimators: 150
+        min_samples_split: 8
+
+  prediction_model_path: prediction_service/model
+
+  model_reports: model_reports
+
+  reports:
+    scores_file : model_reports/scores.json
+    params_file : model_reports/params.json
+
+mlflow_config:
+  artifacts_dir: artifacts
+  experiment_name: RandomForestClassifier_NewsModel
+  run_name: nas_nlp
+  registered_model_name: RFC_NEWS_CLASSIFY_MODEL
+  remote_server_uri: http://127.0.0.1:1234
