@@ -32,10 +32,10 @@ def train_and_evaluate(config_path):
 
         x_train, x_test, y_train, y_test =  train_test_split(x, y, test_size = 0.25, random_state=42, shuffle=True)
 
-        min_samples_leaf = config['train_evaluate']['estimators']['RandomForestClassifer']['params']['min_samples_leaf']
-        max_depth = config['train_evaluate']['estimators']['RandomForestClassifer']['params']['max_depth']
-        n_estimators = config['train_evaluate']['estimators']['RandomForestClassifer']['params']['n_estimators']
-        min_samples_split = config['train_evaluate']['estimators']['RandomForestClassifer']['params']['min_samples_split']
+        min_samples_leaf = config['train_evaluate']['estimators']['RandomForestClassifier']['params']['min_samples_leaf']
+        max_depth = config['train_evaluate']['estimators']['RandomForestClassifier']['params']['max_depth']
+        n_estimators = config['train_evaluate']['estimators']['RandomForestClassifier']['params']['n_estimators']
+        min_samples_split = config['train_evaluate']['estimators']['RandomForestClassifier']['params']['min_samples_split']
 
         prediction_model_path = config['train_evaluate']['prediction_model_path']
         score_file_path = config['train_evaluate']['reports']['scores_file']

@@ -16,7 +16,7 @@ process_data:
 
 train_evaluate:
   estimators:
-    RandomForestClassifer: 
+    RandomForestClassifier: 
       params:
         min_samples_leaf: 1
         max_depth : 10

@@ -17,3 +17,21 @@ stages:
     - data/raw/news_train.csv
     outs:
     - data/processed/news_model_data.csv
+
+  train_and_evaluate:
+    cmd: python src/train_model.py --config=params.yaml
+    deps:
+    - src/train_model.py
+    - data/processed/news_model_data.csv
+    params:
+    - train_evaluate.estimators.RandomForestClassifier.params.min_samples_leaf
+    - train_evaluate.estimators.RandomForestClassifier.params.max_depth
+    - train_evaluate.estimators.RandomForestClassifier.params.n_estimators
+    - train_evaluate.estimators.RandomForestClassifier.params.min_samples_split
+
+    metrics:
+    - model_reports/scores.json:
+        cache: false
+    - model_reports/params.json:
+        cache: false
+    
