@@ -9,3 +9,4 @@ mlflow
 matplotlib
 seaborn
 nltk
+-e .
