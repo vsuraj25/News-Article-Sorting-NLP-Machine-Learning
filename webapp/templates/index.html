@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Metro Interstate Traffic Prediction
+News Article Sorting
 {% endblock title %}
 
 
@@ -50,7 +50,7 @@ Metro Interstate Traffic Prediction
                                     <p class="mb-2">Enter the details as indicated:</p>
                                 </blockquote>
                             </label>
-                            <textarea class="form-control" name="txt" rows="2"
+                            <textarea class="form-control" name="txt" rows="3"
                                 placeholder="Enter your text here"></textarea>  
                         </div>
 
@@ -72,7 +72,7 @@ Metro Interstate Traffic Prediction
                                 </blockquote>
 
                             </label>
-                            <textarea readonly class="form-control" id="exTextarea" rows="5">{{ response }}</textarea>
+                            <textarea readonly class="form-control" id="exTextarea" rows="1">{{ response }}</textarea>
                         </div>
                     </form>
                 </div>

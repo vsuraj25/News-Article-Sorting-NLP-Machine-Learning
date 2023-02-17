@@ -9,4 +9,5 @@ mlflow
 matplotlib
 seaborn
 nltk
+gunicorn
 -e .

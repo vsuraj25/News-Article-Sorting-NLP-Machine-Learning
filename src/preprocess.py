@@ -5,6 +5,8 @@ from exception import Project_Exception
 import argparse
 import sys
 import nltk
+import os
+import pickle
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 nltk.download('stopwords')

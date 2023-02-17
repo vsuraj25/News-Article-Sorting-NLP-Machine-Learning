@@ -29,8 +29,8 @@ stages:
       md5: 99cb48562b017c48fa81f2ff94e276d2
       size: 23458292
     - path: src/preprocess.py
-      md5: 6dec5389c0b2f859e62db4b8659a742f
-      size: 2568
+      md5: 5bdb3536f36086a5e882338502f4932a
+      size: 2594
     outs:
     - path: data/processed/news_model_data.csv
       md5: 4af7a28e8b7d4ea3a60e0ace84ff8340
@@ -42,8 +42,8 @@ stages:
       md5: 4af7a28e8b7d4ea3a60e0ace84ff8340
       size: 22493543
     - path: src/train_model.py
-      md5: b028fcbd30675c4369ddc3970042f0ba
-      size: 4687
+      md5: f9bc78ae18735a9ed2ae2591b0b31114
+      size: 4979
     params:
       params.yaml:
         train_evaluate.estimators.RandomForestClassifier.params.max_depth: 10
@@ -55,5 +55,5 @@ stages:
       md5: 0dd569456c9216485e31415632c48f18
       size: 108
     - path: model_reports/scores.json
-      md5: 2f367c0b4b5431eb7a71848ab6b13e83
-      size: 136
+      md5: d398032c66799a064dd946757a303489
+      size: 144

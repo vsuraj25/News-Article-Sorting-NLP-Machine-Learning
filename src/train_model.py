@@ -82,8 +82,11 @@ def train_and_evaluate(config_path):
         model_path = os.path.join(prediction_model_path, 'model.pkl')
         with open(model_path, 'wb') as model_file:
             pickle.dump(rfc, model_file)
+        cv_transform_model_path = os.path.join(prediction_model_path, 'cv_transform.pkl')
+        with open(cv_transform_model_path, 'wb') as cv_model_file:
+            pickle.dump(cv, cv_model_file)       
         logging.info(f'Model Saved at {prediction_model_path}.')
-
+        logging.info(f'CountVectorizer Model Saved at {cv_transform_model_path}.')
 
     except Exception as e:
         logging.error(Project_Exception(e, sys))

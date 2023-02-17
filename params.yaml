@@ -31,6 +31,10 @@ train_evaluate:
     scores_file : model_reports/scores.json
     params_file : model_reports/params.json
 
+web_model_dir: prediction_service/model/model.pkl
+
+cv_transform_model: prediction_service/model/cv_transform.pkl
+
 mlflow_config:
   artifacts_dir: artifacts
   experiment_name: RandomForestClassifier_NewsModel
