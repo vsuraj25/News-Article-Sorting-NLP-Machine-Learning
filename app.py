@@ -16,7 +16,7 @@ app =  Flask(__name__, static_folder=static_dir, template_folder=template_dir)
 
 @app.route("/", methods = ["GET", "POST"])
 def index():
-    if request.method == 'POST':
+    if request.method == "POST":
         try:
             if request.form:
                 dict_req = dict(request.form)
@@ -30,7 +30,7 @@ def index():
         except Exception as e:
             print(e)
             error =  {"error" : e}
-            render_template("404.html", error=  error)
+            return render_template("404.html", error=  error)
     else:
         return render_template("index.html")
 

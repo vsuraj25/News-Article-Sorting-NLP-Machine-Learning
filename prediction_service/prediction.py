@@ -20,6 +20,20 @@ class TooManyNumbers(Exception):
         self.message = message
         super().__init__(self.message)
 
+class NullText(Exception):
+    def __init__(self, message = 'Please enter a sufficient length of sentence!'):
+        self.message = message
+        super().__init__(self.message)
+
+def __null_text(dict_req):
+    text = str(list(dict_req.values())[0])
+    if len(text) <= 5:
+        raise NullText
+    else:
+        return True
+
+
+
 def _validate_values(dict_req):
         text = str(list(dict_req.values())[0])
         num_len_counter = 0
@@ -33,12 +47,12 @@ def _validate_values(dict_req):
              return True
 
 def form_response(dict_request):
-        if _validate_values:
-            data =  list(dict_request.values())
-            data = str(data[0])
-            print(data)
-            response =  predict(data)
-            return response
+    if __null_text(dict_request):
+        data =  list(dict_request.values())
+        data = str(data[0])
+        print(data)
+        response =  predict(data)
+        return response
      
 def api_response(dict_request):
     try:
