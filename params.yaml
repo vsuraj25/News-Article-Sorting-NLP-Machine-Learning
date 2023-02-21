@@ -41,3 +41,5 @@ mlflow_config:
   run_name: nas_nlp
   registered_model_name: RFC_NEWS_CLASSIFY_MODEL
   remote_server_uri: http://127.0.0.1:1234
+
+production_model_path: production_model/model.pkl

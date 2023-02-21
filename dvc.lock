@@ -57,3 +57,9 @@ stages:
     - path: model_reports/scores.json
       md5: 17235db041b390e2b1dfcbf00e12e949
       size: 144
+  log_production_model:
+    cmd: python src/log_production_model.py --config=params.yaml
+    deps:
+    - path: src/log_production_model.py
+      md5: f471014050b98c62de2ae44ed7994e08
+      size: 2928
