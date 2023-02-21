@@ -14,6 +14,7 @@ import pickle
 import json
 import pickle
 import sys
+import mlflow
 
 def train_and_evaluate(config_path):
     try:
@@ -41,52 +42,83 @@ def train_and_evaluate(config_path):
         score_file_path = config['train_evaluate']['reports']['scores_file']
         params_file_path = config['train_evaluate']['reports']['params_file']
 
-        logging.info(f'Using best model - RandomForestClassifier for model training with parameters min_samples_leaf : \
-                    {min_samples_leaf}, min_samples_split : {min_samples_split}, max_depth : {max_depth}, n_estimators: \
-                        {n_estimators}.')
-        rfc = RandomForestClassifier(
-            min_samples_leaf= min_samples_leaf,
-            min_samples_split= min_samples_split,
-            max_depth =  max_depth,
-            n_estimators= n_estimators
-        )
+        mlflow_config = config['mlflow_config']
+        remote_server_uri = mlflow_config['remote_server_uri']
 
-        logging.info('Fitting data in RandomForestClassifier Model.')
-        rfc.fit(x_train, y_train)
+        logging.info('Setting up mlflow tracking uri.')
+        mlflow.set_tracking_uri(remote_server_uri)
 
-        logging.info('Predicting on test data.')
-        y_pred = rfc.predict(x_test)
+        logging.info('Setting up mlflow experiment as {}.'.format(mlflow_config['experiment_name']))
+        mlflow.set_experiment(mlflow_config['experiment_name'])
 
-        logging.info('Evalauting Metrics.')
-        accuracy, precision, recall, f1 =  evaluate_metrics(y_test, y_pred)
+        logging.info('Starting mlflow run as {}.'.format(mlflow_config['run_name']))
+        with mlflow.start_run(run_name=mlflow_config['run_name']) as proj:
 
-        scores = {'accuracy': accuracy, 'precision': precision, 'recall' : recall, 'f1': f1}
-        params = {'min_samples_leaf' : min_samples_leaf, 'max_depth' : max_depth, 'n_estimators' : n_estimators,\
-                    'min_samples_split': min_samples_split}
-        
-        logging.info(type(rfc).__name__)
-        logging.info(f'Parametes : {params}')
-        logging.info(f"Scores : {scores}")
+            logging.info(f'Using best model - RandomForestClassifier for model training with parameters min_samples_leaf : \
+                        {min_samples_leaf}, min_samples_split : {min_samples_split}, max_depth : {max_depth}, n_estimators: \
+                            {n_estimators}.')
+            rfc = RandomForestClassifier(
+                min_samples_leaf= min_samples_leaf,
+                min_samples_split= min_samples_split,
+                max_depth =  max_depth,
+                n_estimators= n_estimators
+            )
 
-        logging.info(f'Saving scores and parameters report at {score_file_path} and {params_file_path} respectively.')
-        with open(score_file_path, 'w+') as f:
-            json.dump(scores, f, indent=4)
+            logging.info('Fitting data in RandomForestClassifier Model.')
+            rfc.fit(x_train, y_train)
 
-        with open(params_file_path, 'w+') as f:
-            json.dump(params, f, indent=4)
+            logging.info('Predicting on test data.')
+            y_pred = rfc.predict(x_test)
 
-        logging.info('Model Reports saved.')
+            logging.info('Evalauting Metrics.')
+            accuracy, precision, recall, f1 =  evaluate_metrics(y_test, y_pred)
 
-        logging.info(f'Saving model at {prediction_model_path}')
-        os.makedirs(prediction_model_path, exist_ok=True)
-        model_path = os.path.join(prediction_model_path, 'model.pkl')
-        with open(model_path, 'wb') as model_file:
-            pickle.dump(rfc, model_file)
-        cv_transform_model_path = os.path.join(prediction_model_path, 'cv_transform.pkl')
-        with open(cv_transform_model_path, 'wb') as cv_model_file:
-            pickle.dump(cv, cv_model_file)       
-        logging.info(f'Model Saved at {prediction_model_path}.')
-        logging.info(f'CountVectorizer Model Saved at {cv_transform_model_path}.')
+            logging.info('Logging all parameters in mlflow.')
+            mlflow.log_param('min_samples_leaf', min_samples_leaf)
+            mlflow.log_param('max_depth', max_depth)
+            mlflow.log_param('n_estimators', n_estimators)
+            mlflow.log_param('min_samples_split', min_samples_split)
+
+            logging.info('Logging all metrics in mlflow.')
+            mlflow.log_metric('accuracy', accuracy)
+            mlflow.log_metric('precision', precision)
+            mlflow.log_metric('recall', recall)
+            mlflow.log_metric('f1', f1)
+
+            tracking_url_type_store = urlparse(mlflow.get_artifact_uri()).scheme
+
+            if tracking_url_type_store != 'file':
+                mlflow.sklearn.log_model(rfc, "model", registered_model_name = mlflow_config['registered_model_name'])
+            else:
+                mlflow.sklearn.load_model(rfc, "model")
+
+            scores = {'accuracy': accuracy, 'precision': precision, 'recall' : recall, 'f1': f1}
+            params = {'min_samples_leaf' : min_samples_leaf, 'max_depth' : max_depth, 'n_estimators' : n_estimators,\
+                        'min_samples_split': min_samples_split}
+            
+            logging.info(type(rfc).__name__)
+            logging.info(f'Parametes : {params}')
+            logging.info(f"Scores : {scores}")
+
+            logging.info(f'Saving scores and parameters report at {score_file_path} and {params_file_path} respectively.')
+            with open(score_file_path, 'w+') as f:
+                json.dump(scores, f, indent=4)
+
+            with open(params_file_path, 'w+') as f:
+                json.dump(params, f, indent=4)
+
+            logging.info('Model Reports saved.')
+
+            logging.info(f'Saving model at {prediction_model_path}')
+            os.makedirs(prediction_model_path, exist_ok=True)
+            model_path = os.path.join(prediction_model_path, 'model.pkl')
+            with open(model_path, 'wb') as model_file:
+                pickle.dump(rfc, model_file)
+            cv_transform_model_path = os.path.join(prediction_model_path, 'cv_transform.pkl')
+            with open(cv_transform_model_path, 'wb') as cv_model_file:
+                pickle.dump(cv, cv_model_file)       
+            logging.info(f'Model Saved at {prediction_model_path}.')
+            logging.info(f'CountVectorizer Model Saved at {cv_transform_model_path}.')
 
     except Exception as e:
         logging.error(Project_Exception(e, sys))

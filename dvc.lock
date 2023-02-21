@@ -42,8 +42,8 @@ stages:
       md5: 4af7a28e8b7d4ea3a60e0ace84ff8340
       size: 22493543
     - path: src/train_model.py
-      md5: f9bc78ae18735a9ed2ae2591b0b31114
-      size: 4979
+      md5: 45e794e91f05af1d01f9344d9c3ab7c9
+      size: 6615
     params:
       params.yaml:
         train_evaluate.estimators.RandomForestClassifier.params.max_depth: 10
@@ -55,5 +55,5 @@ stages:
       md5: 0dd569456c9216485e31415632c48f18
       size: 108
     - path: model_reports/scores.json
-      md5: d398032c66799a064dd946757a303489
+      md5: 17235db041b390e2b1dfcbf00e12e949
       size: 144
