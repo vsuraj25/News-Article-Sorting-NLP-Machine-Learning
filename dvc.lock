@@ -29,8 +29,8 @@ stages:
       md5: 99cb48562b017c48fa81f2ff94e276d2
       size: 23458292
     - path: src/preprocess.py
-      md5: 5bdb3536f36086a5e882338502f4932a
-      size: 2594
+      md5: 87baff3b37ff05c6fe59ead832d94e2d
+      size: 2813
     outs:
     - path: data/processed/news_model_data.csv
       md5: 4af7a28e8b7d4ea3a60e0ace84ff8340

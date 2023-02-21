@@ -11,6 +11,7 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 nltk.download('stopwords')
 from utils import read_yaml
+from utils.db_upload_load import upload_get_data
 
 def process_data(config_path):
     try:
@@ -59,6 +60,10 @@ def process_data(config_path):
         logging.info(f"Saving model ready data at {model_data_path}.")
         train_df.to_csv(model_data_path, header=True, index = False)
         logging.info(f"Model Saved at {model_data_path}.")
+
+        logging.info("Uploading data in database.")
+        upload_get_data(model_data_path, 'preprocessed_data')
+        logging.info("Data Uploaded in Database")
 
     except Exception as e:
         logging.error(Project_Exception(e, sys))
