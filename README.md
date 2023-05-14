@@ -40,9 +40,9 @@ make individual suggestions based on the user’s prior interests.
 
 
 ## **Deployed app**
-[![App Screenshot](https://user-images.githubusercontent.com/55409076/210774151-24799ff0-dbf3-4240-8334-6b96d8cd4673.PNG)](https://web-production-35a4.up.railway.app/)
+[![App Screenshot](https://user-images.githubusercontent.com/55409076/238179566-1d91d52f-3a7d-496d-9bf2-a082921736e3.png)](https://new-article-classification.onrender.com/)
 
-[Deployed app link](https://web-production-35a4.up.railway.app/)
+[Deployed app link](https://new-article-classification.onrender.com)
 
 <!-- GETTING STARTED -->
 <div id="intro"></div>
@@ -88,7 +88,7 @@ All the models and data are tracked and maintained using DVC and MLflow.
 [![Project Youtube Video](https://github.com/vsuraj25)
 
 ## **Linkedin Post**
-[![Metro Interstate Traffic Predction Project](https://img.shields.io/badge/Metro_Interstate_Traffic_Predction_Project-eeeeee?style=for-the-badge&logo=linkedin&logoColor=ffffff&labelColor=0A66C2)](https://github.com/vsuraj25)
+[![News Article Domain Classification](https://img.shields.io/badge/Metro_Interstate_Traffic_Predction_Project-eeeeee?style=for-the-badge&logo=linkedin&logoColor=ffffff&labelColor=0A66C2)](https://github.com/vsuraj25)
 
 
 ## **About this Internship Project**
@@ -138,10 +138,11 @@ All the models and data are tracked and maintained using DVC and MLflow.
 ## **Contact**
 [![Suraj Verma | LinkedIn](https://img.shields.io/badge/Suraj_Verma-eeeeee?style=for-the-badge&logo=linkedin&logoColor=ffffff&labelColor=0A66C2)][reach_linkedin]
 [![Suraj Verma | G Mail](https://img.shields.io/badge/sv255255-eeeeee?style=for-the-badge&logo=gmail&logoColor=ffffff&labelColor=EA4335)][reach_gmail]
-[![Suraj Verma | G Mail](https://img.shields.io/badge/My_Portfolio-eeeeee?style=for-the-badge)][reach_gmail]
+[![Suraj Verma | Portfolio](https://img.shields.io/badge/My_Portfolio-eeeeee?style=for-the-badge)][reach_portfolio]
 
 [reach_linkedin]: https://www.linkedin.com/in/suraj-verma-982b31157/
 [reach_gmail]: mailto:sv255255@gmail.com?subject=Github
+[reach_portfolio]: https://vsuraj25.github.io/
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
