@@ -85,10 +85,10 @@ All the models and data are tracked and maintained using DVC and MLflow.
 * 01.07 Seconds
 
 ## **Project Demo Youtube Video**
-[![Project Youtube Video](https://github.com/vsuraj25)
+[![Project Youtube Video](https://www.youtube.com/watch?v=krK5HlGZXzQ)
 
 ## **Linkedin Post**
-[![News Article Domain Classification](https://img.shields.io/badge/Metro_Interstate_Traffic_Predction_Project-eeeeee?style=for-the-badge&logo=linkedin&logoColor=ffffff&labelColor=0A66C2)](https://github.com/vsuraj25)
+[![News Article Domain Classification](https://img.shields.io/badge/Metro_Interstate_Traffic_Predction_Project-eeeeee?style=for-the-badge&logo=linkedin&logoColor=ffffff&labelColor=0A66C2)](https://www.linkedin.com/posts/suraj-verma-982b31157_machinelearning-nlp-ineuron-activity-7063482476546973697-3xPh?utm_source=share&utm_medium=member_desktop)
 
 
 ## **About this Internship Project**
