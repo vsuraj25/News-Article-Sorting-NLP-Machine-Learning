@@ -82,7 +82,7 @@ All the models and data are tracked and maintained using DVC and MLflow.
 
 ## **Latency for model response**
  
-* 01.60 Seconds
+* 01.07 Seconds
 
 ## **Project Demo Youtube Video**
 [![Project Youtube Video](https://github.com/vsuraj25)
